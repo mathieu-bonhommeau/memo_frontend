@@ -1,25 +1,16 @@
-import CollapseWrapper from "../components/CollapseWrapper";
-import Main from "../components/Main";
-import {useEffect, useState} from "react";
+import CollapseWrapper from "../components/modules/CollapseWrapper";
+import Main from "../components/layout/Main";
+import useFetch from "../hooks/useFetch";
 
 const Home = () => {
-    const [tips, setTips] = useState([])
-    console.log(tips)
-    useEffect(() => {
-        const tips = async () => {
-            const response = await fetch('http://localhost:3100/tips')
-            if (response.ok) {
-                const datas = await response.json()
-                setTips(datas)
-            }
-        }
-        tips().then()
-        return () => {}
-    }, [])
+
+    const {datas: environments, isLoading} = useFetch('/environments-tips')
 
     return (
         <Main>
-            {tips.length > 0 ? <CollapseWrapper environment={"test"} tips={tips} /> : ''}
+            {isLoading ? '' : environments.data.map(environment => (
+                <CollapseWrapper environment={environment.name} tips={environment.tips} />
+            )) }
         </Main>
     )
 }
