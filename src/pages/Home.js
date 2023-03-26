@@ -1,6 +1,7 @@
 import CollapseWrapper from "../components/modules/CollapseWrapper";
 import Main from "../components/layout/Main";
 import useFetch from "../hooks/useFetch";
+import AddElement from "../components/modules/AddElement";
 
 const Home = () => {
 
@@ -8,8 +9,9 @@ const Home = () => {
 
     return (
         <Main>
+            <AddElement type={"tip"}/>
             {isLoading ? '' : environments.data.map(environment => (
-                <CollapseWrapper environment={environment.name} tips={environment.tips} />
+                <CollapseWrapper key={`${environment.name}-environment.id`} environment={environment.name} tips={environment.tips} />
             )) }
         </Main>
     )
