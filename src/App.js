@@ -4,8 +4,9 @@ import Home from "./pages/Home";
 import Header from "./components/layout/Header";
 
 function App() {
+
     return (
-        <div className={"App bg-zinc-900 h-screen"}>
+        <div className={`App bg-zinc-900 h-screen`}>
             <Header />
             <Routes>
                 <Route path={'/'} element={<Home />} />

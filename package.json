@@ -23,7 +23,12 @@
     "dev": "NODE_ENV=development react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext .js",
+    "prettier-format": "run-script-os",
+    "prettier-format:win32": "prettier --config .prettierrc \"*.js\" --write",
+    "prettier-format:default": "prettier --config .prettierrc \"*.js\" --write",
+    "pretty-lint": "npm run prettier-format && npm run lint"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "run-script-os": "^1.1.6",
     "tailwindcss": "^3.2.7"
   }
 }

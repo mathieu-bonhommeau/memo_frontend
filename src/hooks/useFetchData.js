@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-const useFetch = (url) => {
+const useFetchData = (url) => {
     const [datas, setDatas] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
@@ -9,7 +9,6 @@ const useFetch = (url) => {
             const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}${url}`)
             if (response.ok) {
                 const datas = await response.json()
-                console.log(datas)
                 setDatas(datas)
                 setIsLoading(false)
             }
@@ -21,4 +20,4 @@ const useFetch = (url) => {
     return {datas, isLoading}
 }
 
-export default useFetch
+export default useFetchData

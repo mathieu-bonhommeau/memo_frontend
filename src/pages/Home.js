@@ -1,15 +1,15 @@
 import CollapseWrapper from "../components/modules/CollapseWrapper";
 import Main from "../components/layout/Main";
-import useFetch from "../hooks/useFetch";
-import AddElement from "../components/modules/AddElement";
+import useFetchData from "../hooks/useFetchData";
+import AddTip from "../components/modules/AddTip";
 
 const Home = () => {
 
-    const {datas: environments, isLoading} = useFetch('/environments-tips')
+    const {datas: environments, isLoading} = useFetchData('/environments-tips')
 
     return (
         <Main>
-            <AddElement type={"tip"}/>
+            <AddTip />
             {isLoading ? '' : environments.data.map(environment => (
                 <CollapseWrapper key={`${environment.name}-environment.id`} environment={environment.name} tips={environment.tips} />
             )) }
